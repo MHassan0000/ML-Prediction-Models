@@ -301,35 +301,35 @@ if selected_view == "Overview & Architecture":
         st.markdown(f"""
         <div class="file-card">
             <div class="file-name">{ICON_DATABASE} data/</div>
-            <div class="file-desc">Raw and preprocessed datasets: titanic.csv, heart.csv, encoded variants.</div>
+            <div class="file-desc">Official assignment datasets: titanic.csv and heart.csv.</div>
         </div>
         <div class="file-card">
             <div class="file-name">{ICON_CPU} models/</div>
-            <div class="file-desc">Serialised SVC pickle models and encoders: titanic_svc_model.pkl, heart_disease_svc_model.pkl.</div>
+            <div class="file-desc">Trained SVC models and encoders: titanic_svc_model.pkl, heart_disease_svc_model.pkl.</div>
         </div>
         """, unsafe_allow_html=True)
 
     with c2:
         st.markdown(f"""
         <div class="file-card">
-            <div class="file-name">{ICON_FILE_CODE} pipelines/</div>
-            <div class="file-desc">Training scripts executing the 4-phase ML lifecycle end-to-end.</div>
+            <div class="file-name">{ICON_FILE_TEXT} Jupyter Notebooks</div>
+            <div class="file-desc">Task1 and Task2 notebooks with complete ML lifecycle and live deployment links.</div>
         </div>
         <div class="file-card">
-            <div class="file-name">{ICON_CHART} reports/</div>
-            <div class="file-desc">Visual evaluation artifacts: EDA charts, correlation maps, confusion matrices.</div>
+            <div class="file-name">{ICON_FILE_CODE} Web Applications</div>
+            <div class="file-desc">Streamlit applications: app.py (unified hub), titanic_app.py, heart_disease_app.py.</div>
         </div>
         """, unsafe_allow_html=True)
 
     with c3:
         st.markdown(f"""
         <div class="file-card">
-            <div class="file-name">{ICON_FILE_TEXT} notebooks/</div>
-            <div class="file-desc">Academic submission notebooks with Hassan Yousaf's metadata and analysis.</div>
+            <div class="file-name">{ICON_EXTERNAL} modal/</div>
+            <div class="file-desc">Serverless container deployment scripts for automated cloud hosting.</div>
         </div>
         <div class="file-card">
-            <div class="file-name">{ICON_EXTERNAL} modal/</div>
-            <div class="file-desc">Modal serverless container deployment scripts for zero-latency inference.</div>
+            <div class="file-name">{ICON_CHECK} Streamlit Cloud</div>
+            <div class="file-desc">Live production web apps hosted on Streamlit Community Cloud.</div>
         </div>
         """, unsafe_allow_html=True)
 

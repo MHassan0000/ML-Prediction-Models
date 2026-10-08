@@ -35,51 +35,36 @@ This repository implements two production-grade Machine Learning classification 
 
 ## Clean Project Structure
 
-The project has been organized into modular directories for data, models, reports, notebooks, and pipelines:
+The project has been organized into a lean, professional structure containing only essential files:
 
 ```
 ML-Prediction-Models/
 │
-├── app.py                                   # UNIFIED Streamlit portal (Both tasks + Student dossier)
-├── titanic_app.py                           # Standalone Titanic web app
-├── heart_disease_app.py                     # Standalone Heart Disease web app
+├── app.py                                   # Unified Streamlit portal (Both tasks + Student dossier)
+├── titanic_app.py                           # Standalone Titanic web app (Streamlit Cloud)
+├── heart_disease_app.py                     # Standalone Heart Disease web app (Streamlit Cloud)
 │
-├── data/                                    # Datasets directory
-│   ├── titanic.csv                          # Original Titanic dataset
-│   ├── heart.csv                            # Original UCI Heart Disease dataset
-│   ├── titanic_encoded.csv                  # Preprocessed & label-encoded Titanic data
-│   └── heart_disease_encoded.csv            # Preprocessed & label-encoded Heart data
+├── Task1_Titanic_Survival_Prediction.ipynb  # Task 1 Jupyter submission notebook
+├── Task2_Heart_Disease_Prediction.ipynb     # Task 2 Jupyter submission notebook
 │
-├── models/                                  # Trained model serialization artifacts
+├── data/                                    # Datasets
+│   ├── titanic.csv                          # Official Titanic dataset
+│   └── heart.csv                            # Official UCI Heart Disease dataset
+│
+├── models/                                  # Trained model serialization artifacts (.pkl)
 │   ├── titanic_svc_model.pkl                # Trained SVC model (Task 1)
 │   ├── heart_disease_svc_model.pkl          # Trained SVC model (Task 2)
-│   └── heart_disease_le_cp.pkl              # Chest pain label encoder
+│   └── heart_disease_le_cp.pkl              # Fitted chest pain LabelEncoder
 │
-├── notebooks/                               # Plagiarism-free Jupyter submission notebooks
-│   ├── Task1_Titanic_Survival_Prediction.ipynb
-│   └── Task2_Heart_Disease_Prediction.ipynb
-│
-├── pipelines/                               # Python training scripts
-│   ├── Task1_Titanic_Survival_Prediction.py
-│   └── Task2_Heart_Disease_Prediction.py
-│
-├── reports/                                 # Visual evaluation artifacts & export logs
-│   ├── titanic_eda.png
-│   ├── titanic_confusion_matrix.png
-│   ├── titanic_predictions.csv
-│   ├── heart_disease_eda.png
-│   ├── heart_disease_confusion_matrix.png
-│   ├── heart_disease_correlation.png
-│   └── heart_disease_predictions.csv
-│
-├── modal/                                   # Modal cloud deployment scripts
-│   ├── modal_titanic.py
-│   └── modal_heart_disease.py
+├── modal/                                   # Modal container deployment configs
+│   ├── modal_titanic.py                     # Titanic serverless cloud runner
+│   └── modal_heart_disease.py               # Heart disease serverless cloud runner
 │
 ├── .streamlit/
 │   └── config.toml                          # Dark theme styling configuration
 ├── requirements.txt                         # Python dependencies
-├── generate_notebooks.py                    # Plagiarism-free notebook generator
+├── .env.example                             # Environment variables template
+├── .gitignore                               # Git ignore configuration
 └── README.md                                # Project documentation
 ```
 
