@@ -95,9 +95,10 @@ sns.countplot(data=df, x="cp", hue="target", ax=axes[1, 1], palette="Set3")
 axes[1, 1].set_title("Chest Pain Type by Target")
 
 plt.tight_layout()
-plt.savefig("heart_disease_eda.png", dpi=100)
+os.makedirs("reports", exist_ok=True)
+plt.savefig("reports/heart_disease_eda.png", dpi=100)
 plt.close()
-print("EDA plots saved to heart_disease_eda.png")
+print("EDA plots saved to reports/heart_disease_eda.png")
 
 # Correlation heatmap for all features
 plt.figure(figsize=(12, 8))
@@ -105,9 +106,9 @@ corr = df.corr()
 sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm", center=0)
 plt.title("Heart Disease – Feature Correlation Heatmap")
 plt.tight_layout()
-plt.savefig("heart_disease_correlation.png", dpi=100)
+plt.savefig("reports/heart_disease_correlation.png", dpi=100)
 plt.close()
-print("Correlation heatmap saved to heart_disease_correlation.png")
+print("Correlation heatmap saved to reports/heart_disease_correlation.png")
 
 # ── 3. Data Pre-processing & Label Encoding ───────────────────────
 print("\n[3] DATA PRE-PROCESSING & LABEL ENCODING")
@@ -136,8 +137,9 @@ print("\nEncoded sample (first 5 rows):")
 print(df_model.head())
 
 # Save encoded dataset
-df_model.to_csv("heart_disease_encoded.csv", index=False)
-print("\nEncoded dataset saved to heart_disease_encoded.csv")
+os.makedirs("data", exist_ok=True)
+df_model.to_csv("data/heart_disease_encoded.csv", index=False)
+print("\nEncoded dataset saved to data/heart_disease_encoded.csv")
 
 # ── 4. Train / Test Split & Model Training ────────────────────────
 print("\n[4] MODEL TRAINING – Support Vector Classifier (SVC)")
@@ -178,9 +180,10 @@ sns.heatmap(cm, annot=True, fmt="d", cmap="Reds",
 ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
 ax.set_title("Heart Disease – Confusion Matrix")
 plt.tight_layout()
-plt.savefig("heart_disease_confusion_matrix.png", dpi=100)
+os.makedirs("reports", exist_ok=True)
+plt.savefig("reports/heart_disease_confusion_matrix.png", dpi=100)
 plt.close()
-print("Confusion matrix saved to heart_disease_confusion_matrix.png")
+print("Confusion matrix saved to reports/heart_disease_confusion_matrix.png")
 
 # ── 6. Making Predictions on Sample Data ─────────────────────────
 print("\n[6] MAKING PREDICTIONS ON SAMPLE DATA")
@@ -201,24 +204,28 @@ sample_data["Predicted"] = ["Heart Disease" if p == 1 else "No Heart Disease"
 print(sample_data.to_string(index=False))
 
 # Save predictions
-sample_data.to_csv("heart_disease_predictions.csv", index=False)
-print("\nPredictions saved to heart_disease_predictions.csv")
+os.makedirs("reports", exist_ok=True)
+sample_data.to_csv("reports/heart_disease_predictions.csv", index=False)
+print("\nPredictions saved to reports/heart_disease_predictions.csv")
 
 # ── 7. Save Trained Model ─────────────────────────────────────────
 print("\n[7] SAVING TRAINED MODEL")
 print("-" * 40)
 
-MODEL_FILE = "heart_disease_svc_model.pkl"
-with open(MODEL_FILE, "wb") as f:
+os.makedirs("models", exist_ok=True)
+with open("models/heart_disease_svc_model.pkl", "wb") as f:
     pickle.dump(svc_heart, f)
-
-# Also save the label encoder
-LE_FILE = "heart_disease_le_cp.pkl"
-with open(LE_FILE, "wb") as f:
+with open("models/heart_disease_le_cp.pkl", "wb") as f:
     pickle.dump(le_cp, f)
 
-print(f"Model saved to {MODEL_FILE}")
-print(f"Label encoder saved to {LE_FILE}")
+# Root compatibility copies
+with open("heart_disease_svc_model.pkl", "wb") as f:
+    pickle.dump(svc_heart, f)
+with open("heart_disease_le_cp.pkl", "wb") as f:
+    pickle.dump(le_cp, f)
+
+print("Model saved to models/heart_disease_svc_model.pkl & heart_disease_svc_model.pkl")
+print("Label encoder saved to models/heart_disease_le_cp.pkl & heart_disease_le_cp.pkl")
 
 print("\n" + "=" * 60)
 print("TASK 2 COMPLETE")

@@ -83,9 +83,10 @@ df["age"].dropna().hist(bins=30, ax=axes[1, 1], color="steelblue", edgecolor="bl
 axes[1, 1].set_title("Age Distribution")
 
 plt.tight_layout()
-plt.savefig("titanic_eda.png", dpi=100)
+os.makedirs("reports", exist_ok=True)
+plt.savefig("reports/titanic_eda.png", dpi=100)
 plt.close()
-print("EDA plots saved to titanic_eda.png")
+print("EDA plots saved to reports/titanic_eda.png")
 
 # ── 3. Data Pre-processing & Label Encoding ───────────────────────
 print("\n[3] DATA PRE-PROCESSING & LABEL ENCODING")
@@ -112,8 +113,9 @@ print("\nEncoded sample:")
 print(df_model.head())
 
 # Save encoded data for reference
-df_model.to_csv("titanic_encoded.csv", index=False)
-print("Encoded dataset saved to titanic_encoded.csv")
+os.makedirs("data", exist_ok=True)
+df_model.to_csv("data/titanic_encoded.csv", index=False)
+print("Encoded dataset saved to data/titanic_encoded.csv")
 
 # ── 4. Train / Test Split & Model Training ────────────────────────
 print("\n[4] MODEL TRAINING – Support Vector Classifier (SVC)")
@@ -154,9 +156,10 @@ sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
 ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
 ax.set_title("Titanic – Confusion Matrix")
 plt.tight_layout()
-plt.savefig("titanic_confusion_matrix.png", dpi=100)
+os.makedirs("reports", exist_ok=True)
+plt.savefig("reports/titanic_confusion_matrix.png", dpi=100)
 plt.close()
-print("Confusion matrix saved to titanic_confusion_matrix.png")
+print("Confusion matrix saved to reports/titanic_confusion_matrix.png")
 
 # ── 6. Making Predictions on Sample Data ─────────────────────────
 print("\n[6] MAKING PREDICTIONS ON SAMPLE DATA")
@@ -182,16 +185,20 @@ sample_raw["Predicted_Survival"] = ["Survived" if p == 1 else "Did Not Survive"
 print(sample_raw.to_string(index=False))
 
 # Save predictions
-sample_raw.to_csv("titanic_predictions.csv", index=False)
-print("\nPredictions saved to titanic_predictions.csv")
+os.makedirs("reports", exist_ok=True)
+sample_raw.to_csv("reports/titanic_predictions.csv", index=False)
+print("\nPredictions saved to reports/titanic_predictions.csv")
 
 # ── 7. Save Trained Model ─────────────────────────────────────────
 print("\n[7] SAVING TRAINED MODEL")
 print("-" * 40)
 
+os.makedirs("models", exist_ok=True)
+with open("models/titanic_svc_model.pkl", "wb") as f:
+    pickle.dump(svc, f)
 with open("titanic_svc_model.pkl", "wb") as f:
     pickle.dump(svc, f)
-print("Model saved to titanic_svc_model.pkl")
+print("Model saved to models/titanic_svc_model.pkl & titanic_svc_model.pkl")
 
 print("\n" + "=" * 60)
 print("TASK 1 COMPLETE")
