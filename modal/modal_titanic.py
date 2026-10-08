@@ -1,16 +1,16 @@
 """
 Modal Deployment – Titanic Survival Prediction App
 ===================================================
-modal deploy modal_titanic.py        # permanent
-modal serve  modal_titanic.py        # ephemeral dev
+modal deploy modal/modal_titanic.py        # permanent
+modal serve  modal/modal_titanic.py        # ephemeral dev
 """
 
-import modal
 from pathlib import Path
+import modal
 
 app = modal.App("titanic-predictor")
 
-LOCAL_DIR = Path(__file__).parent
+ROOT_DIR = Path(__file__).resolve().parent.parent
 
 # ── Build image: install deps AND bake app files in at build time ─
 image = (
@@ -27,10 +27,10 @@ image = (
         "threadpoolctl==3.5.0",
         "narwhals>=2.0.1",
     )
-    .add_local_file(str(LOCAL_DIR / "titanic_app.py"),        "/app/titanic_app.py")
-    .add_local_file(str(LOCAL_DIR / "titanic_svc_model.pkl"), "/app/titanic_svc_model.pkl")
-    .add_local_file(str(LOCAL_DIR / "titanic.csv"),           "/app/titanic.csv")
-    .add_local_dir(str(LOCAL_DIR / ".streamlit"),             "/app/.streamlit")
+    .add_local_file(str(ROOT_DIR / "titanic_app.py"),               "/app/titanic_app.py")
+    .add_local_file(str(ROOT_DIR / "models" / "titanic_svc_model.pkl"), "/app/models/titanic_svc_model.pkl")
+    .add_local_file(str(ROOT_DIR / "data" / "titanic.csv"),          "/app/data/titanic.csv")
+    .add_local_dir(str(ROOT_DIR / ".streamlit"),                    "/app/.streamlit")
 )
 
 # ── Web endpoint ──────────────────────────────────────────────────

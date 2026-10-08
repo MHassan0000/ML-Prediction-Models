@@ -1,16 +1,16 @@
 """
 Modal Deployment – Heart Disease Prediction App
 ================================================
-modal deploy modal_heart_disease.py        # permanent
-modal serve  modal_heart_disease.py        # ephemeral dev
+modal deploy modal/modal_heart_disease.py        # permanent
+modal serve  modal/modal_heart_disease.py        # ephemeral dev
 """
 
-import modal
 from pathlib import Path
+import modal
 
 app = modal.App("heart-disease-predictor")
 
-LOCAL_DIR = Path(__file__).parent
+ROOT_DIR = Path(__file__).resolve().parent.parent
 
 # ── Build image: install deps AND bake app files in at build time ─
 image = (
@@ -27,12 +27,11 @@ image = (
         "threadpoolctl==3.5.0",
         "narwhals>=2.0.1",
     )
-    # Copy each required file directly into the container image
-    .add_local_file(str(LOCAL_DIR / "heart_disease_app.py"),        "/app/heart_disease_app.py")
-    .add_local_file(str(LOCAL_DIR / "heart_disease_svc_model.pkl"), "/app/heart_disease_svc_model.pkl")
-    .add_local_file(str(LOCAL_DIR / "heart_disease_le_cp.pkl"),     "/app/heart_disease_le_cp.pkl")
-    .add_local_file(str(LOCAL_DIR / "heart.csv"),                   "/app/heart.csv")
-    .add_local_dir(str(LOCAL_DIR / ".streamlit"),                   "/app/.streamlit")
+    .add_local_file(str(ROOT_DIR / "heart_disease_app.py"),               "/app/heart_disease_app.py")
+    .add_local_file(str(ROOT_DIR / "models" / "heart_disease_svc_model.pkl"), "/app/models/heart_disease_svc_model.pkl")
+    .add_local_file(str(ROOT_DIR / "models" / "heart_disease_le_cp.pkl"),     "/app/models/heart_disease_le_cp.pkl")
+    .add_local_file(str(ROOT_DIR / "data" / "heart.csv"),                  "/app/data/heart.csv")
+    .add_local_dir(str(ROOT_DIR / ".streamlit"),                            "/app/.streamlit")
 )
 
 # ── Web endpoint ──────────────────────────────────────────────────

@@ -247,9 +247,15 @@ with st.sidebar:
     st.markdown("---")
     st.markdown(f'<div class="nav-label">{ICON_EXTERNAL} Cloud Deployments</div>', unsafe_allow_html=True)
     st.markdown("""
+    **Streamlit Cloud:**
+    - [Titanic App](https://titanic-model-hassan.streamlit.app)
+    - [Heart Disease App](https://heart-disease-model-hassan.streamlit.app)
+
+    **Modal Cloud:**
     - [Titanic on Modal](https://mhassan0000--titanic-predictor-run.modal.run)
     - [Heart Disease on Modal](https://mhassan0000--heart-disease-predictor-run.modal.run)
-    - [GitHub Repository](https://github.com/MHassan0000/ML-Prediction-Models)
+
+    [GitHub Repository](https://github.com/MHassan0000/ML-Prediction-Models)
     """)
 
 

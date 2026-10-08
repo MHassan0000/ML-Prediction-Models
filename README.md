@@ -11,14 +11,14 @@
 
 ---
 
-## Live Cloud Deployments (Modal)
+## Live Cloud Deployments
 
-Both tasks are containerized in Debian Slim environments and deployed live on Modal:
+Both prediction systems are live on **Streamlit Community Cloud** and **Modal Serverless Cloud**:
 
-| Application | Live URL | Algorithm | Status |
-|-------------|----------|-----------|--------|
-| **Titanic Survival Predictor** | [https://mhassan0000--titanic-predictor-run.modal.run](https://mhassan0000--titanic-predictor-run.modal.run) | SVC (RBF, 7 Features) | **Active** |
-| **Heart Disease Risk Predictor** | [https://mhassan0000--heart-disease-predictor-run.modal.run](https://mhassan0000--heart-disease-predictor-run.modal.run) | SVC (RBF, 4 Features) | **Active** |
+| Application | Streamlit Cloud URL | Modal Cloud URL | Status |
+|-------------|---------------------|-----------------|--------|
+| **Task 1: Titanic Survival Predictor** | [titanic-model-hassan.streamlit.app](https://titanic-model-hassan.streamlit.app) | [mhassan0000--titanic-predictor-run.modal.run](https://mhassan0000--titanic-predictor-run.modal.run) | **Live & Active** |
+| **Task 2: Heart Disease Predictor** | [heart-disease-model-hassan.streamlit.app](https://heart-disease-model-hassan.streamlit.app) | [mhassan0000--heart-disease-predictor-run.modal.run](https://mhassan0000--heart-disease-predictor-run.modal.run) | **Live & Active** |
 
 ---
 
