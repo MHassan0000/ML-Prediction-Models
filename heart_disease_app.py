@@ -267,7 +267,7 @@ st.markdown(f'''
 <div class="app-header">
     <div class="icon-wrap">{ICON_HEART}</div>
     <h1>Heart Disease Predictor</h1>
-    <p>ML Assignment 2 — Task 2 &nbsp;&bull;&nbsp; Support Vector Classifier &nbsp;&bull;&nbsp; UCI Heart Disease Dataset</p>
+    <p>Machine Learning Assignment 2 — Task 2 &nbsp;&bull;&nbsp; <strong>Muhammad Hassan Yousaf (FA24-BSE-082)</strong> &nbsp;&bull;&nbsp; Support Vector Classifier</p>
 </div>
 ''', unsafe_allow_html=True)
 
@@ -276,14 +276,25 @@ BASE = Path(__file__).parent
 
 @st.cache_resource
 def load_model():
-    with open(BASE / "heart_disease_svc_model.pkl", "rb") as f:
-        return pickle.load(f)
+    candidates = [
+        BASE / "heart_disease_svc_model.pkl",
+        BASE / "models" / "heart_disease_svc_model.pkl",
+    ]
+    for p in candidates:
+        if p.exists():
+            with open(p, "rb") as f:
+                return pickle.load(f)
+    raise FileNotFoundError("heart_disease_svc_model.pkl not found")
 
 @st.cache_data
 def load_dataset():
-    csv_path = BASE / "heart.csv"
-    if csv_path.exists():
-        return pd.read_csv(csv_path)
+    candidates = [
+        BASE / "heart.csv",
+        BASE / "data" / "heart.csv",
+    ]
+    for p in candidates:
+        if p.exists():
+            return pd.read_csv(p)
     return None
 
 try:

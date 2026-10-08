@@ -251,7 +251,7 @@ st.markdown(f'''
 <div class="app-header">
     <div class="icon-wrap">{ICON_SHIP}</div>
     <h1>Titanic Survival Predictor</h1>
-    <p>ML Assignment 2 — Task 1 &nbsp;&bull;&nbsp; Support Vector Classifier &nbsp;&bull;&nbsp; Titanic Dataset</p>
+    <p>Machine Learning Assignment 2 — Task 1 &nbsp;&bull;&nbsp; <strong>Muhammad Hassan Yousaf (FA24-BSE-082)</strong> &nbsp;&bull;&nbsp; Support Vector Classifier</p>
 </div>
 ''', unsafe_allow_html=True)
 
@@ -260,9 +260,15 @@ BASE = Path(__file__).parent
 
 @st.cache_resource
 def load_model():
-    model_path = BASE / "titanic_svc_model.pkl"
-    with open(model_path, "rb") as f:
-        return pickle.load(f)
+    candidates = [
+        BASE / "titanic_svc_model.pkl",
+        BASE / "models" / "titanic_svc_model.pkl",
+    ]
+    for p in candidates:
+        if p.exists():
+            with open(p, "rb") as f:
+                return pickle.load(f)
+    raise FileNotFoundError("titanic_svc_model.pkl not found")
 
 @st.cache_resource
 def build_encoders():
@@ -274,9 +280,13 @@ def build_encoders():
 
 @st.cache_data
 def load_dataset():
-    csv_path = BASE / "titanic.csv"
-    if csv_path.exists():
-        return pd.read_csv(csv_path)
+    candidates = [
+        BASE / "titanic.csv",
+        BASE / "data" / "titanic.csv",
+    ]
+    for p in candidates:
+        if p.exists():
+            return pd.read_csv(p)
     try:
         import seaborn as sns
         return sns.load_dataset("titanic")
