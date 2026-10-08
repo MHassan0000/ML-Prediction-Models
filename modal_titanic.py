@@ -30,6 +30,7 @@ image = (
     .add_local_file(str(LOCAL_DIR / "titanic_app.py"),        "/app/titanic_app.py")
     .add_local_file(str(LOCAL_DIR / "titanic_svc_model.pkl"), "/app/titanic_svc_model.pkl")
     .add_local_file(str(LOCAL_DIR / "titanic.csv"),           "/app/titanic.csv")
+    .add_local_dir(str(LOCAL_DIR / ".streamlit"),             "/app/.streamlit")
 )
 
 # ── Web endpoint ──────────────────────────────────────────────────
@@ -49,4 +50,5 @@ def run():
         "--server.headless",           "true",
         "--server.enableCORS",         "false",
         "--server.enableXsrfProtection", "false",
+        "--browser.gatherUsageStats",  "false",
     ])

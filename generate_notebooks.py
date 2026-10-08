@@ -51,7 +51,7 @@ titanic_cells = [
 
     md_cell("""# Assignment 2 – Task 1: Titanic Passenger Survival Prediction System
 ---
-**Deployment Link:** [https://ml-teaching-notebooks-jrrdwercxskw5kwc6rufvp.streamlit.app/](https://ml-teaching-notebooks-jrrdwercxskw5kwc6rufvp.streamlit.app/)
+**Deployment Link:** [Titanic Predictor on Modal](https://mhassan0000--titanic-predictor-run.modal.run)
 
 This notebook follows the complete Machine Learning lifecycle:
 1. Data Collection
@@ -62,7 +62,7 @@ This notebook follows the complete Machine Learning lifecycle:
 6. Making Predictions
 7. Saving the Trained Model
 
-**Dataset:** Titanic (built-in seaborn dataset)  
+**Dataset:** Titanic (built-in seaborn dataset)
 **Algorithm:** Support Vector Classifier (SVC)
 """),
 
@@ -78,7 +78,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 warnings.filterwarnings("ignore")
-print("Libraries imported successfully OK")"""),
+print("Libraries imported successfully")"""),
 
     md_cell("## Step 1 – Data Collection\nLoad the Titanic dataset (seaborn built-in)."),
     code_cell("""\
@@ -121,7 +121,7 @@ axes[1,1].set_title("Age Distribution")
 plt.tight_layout()
 plt.savefig("titanic_eda.png", dpi=100)
 plt.show()
-print("EDA plots saved OK")"""),
+print("EDA plots saved")"""),
 
     md_cell("## Step 3 – Data Pre-processing & Label Encoding"),
     code_cell("""\
@@ -142,7 +142,7 @@ df_model["embarked"] = le_embarked.fit_transform(df_model["embarked"])
 
 # Save encoded dataset
 df_model.to_csv("titanic_encoded.csv", index=False)
-print("Encoded dataset saved to titanic_encoded.csv OK")
+print("Encoded dataset saved to titanic_encoded.csv")
 df_model.head()"""),
 
     md_cell("## Step 4 – Model Training (Support Vector Classifier)"),
@@ -158,7 +158,7 @@ print(f"Testing  samples : {X_test.shape[0]}")
 
 svc = SVC(kernel="rbf", random_state=42)
 svc.fit(X_train, y_train)
-print("\\nSVC model trained successfully OK")"""),
+print("\\nSVC model trained successfully")"""),
 
     md_cell("## Step 5 – Model Evaluation"),
     code_cell("""\
@@ -198,12 +198,12 @@ sample["sex"]      = le_sex.transform(sample["sex"])
 sample["embarked"] = le_embarked.transform(sample["embarked"])
 
 predictions = svc.predict(sample)
-sample_raw["Predicted_Survival"] = ["Survived ✓" if p==1 else "Did Not Survive ✗"
+sample_raw["Predicted_Survival"] = ["Survived" if p==1 else "Did Not Survive"
                                      for p in predictions]
 
 # Save predictions
 sample_raw.to_csv("titanic_predictions.csv", index=False)
-print("Predictions saved to titanic_predictions.csv OK")
+print("Predictions saved to titanic_predictions.csv")
 sample_raw"""),
 
     md_cell("## Step 7 – Save Trained Model"),
@@ -211,7 +211,7 @@ sample_raw"""),
 with open("titanic_svc_model.pkl", "wb") as f:
     pickle.dump(svc, f)
 
-print("Model saved to titanic_svc_model.pkl OK")
+print("Model saved to titanic_svc_model.pkl")
 print("\\n" + "="*50)
 print("TASK 1 COMPLETE")
 print("="*50)"""),
@@ -224,7 +224,7 @@ heart_cells = [
 
     md_cell("""# Assignment 2 – Task 2: Heart Disease Prediction System
 ---
-**Deployment Link:** [https://heart-disease-predictor-ml.streamlit.app/](https://heart-disease-predictor-ml.streamlit.app/)
+**Deployment Link:** [Heart Disease Predictor on Modal](https://mhassan0000--heart-disease-predictor-run.modal.run)
 
 This notebook follows the **exact same steps** as Task 1 (Titanic Prediction):
 1. Data Collection
@@ -235,8 +235,8 @@ This notebook follows the **exact same steps** as Task 1 (Titanic Prediction):
 6. Making Predictions
 7. Saving the Trained Model
 
-**Dataset:** UCI Heart Disease (Cleveland) – `heart.csv`  
-**Algorithm:** Support Vector Classifier (SVC)  
+**Dataset:** UCI Heart Disease (Cleveland) – `heart.csv`
+**Algorithm:** Support Vector Classifier (SVC)
 **Constraint:** Only 4 input attributes selected from the dataset
 
 ### Selected 4 Input Attributes:
@@ -260,7 +260,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 warnings.filterwarnings("ignore")
-print("Libraries imported successfully OK")"""),
+print("Libraries imported successfully")"""),
 
     md_cell("## Step 1 – Data Collection\nLoad the Heart Disease dataset from the local CSV file."),
     code_cell("""\
@@ -307,7 +307,7 @@ axes[1,1].set_title("Chest Pain Type by Target")
 plt.tight_layout()
 plt.savefig("heart_disease_eda.png", dpi=100)
 plt.show()
-print("EDA plots saved OK")"""),
+print("EDA plots saved")"""),
 
     code_cell("""\
 # Correlation Heatmap
@@ -318,11 +318,11 @@ plt.title("Heart Disease – Feature Correlation Heatmap")
 plt.tight_layout()
 plt.savefig("heart_disease_correlation.png", dpi=100)
 plt.show()
-print("Correlation heatmap saved OK")"""),
+print("Correlation heatmap saved")"""),
 
     md_cell("""## Step 3 – Data Pre-processing & Label Encoding
 
-### ⚠️ Constraint: Select only 4 input attributes
+### Constraint: Select only 4 input attributes
 Selected features: **age**, **thalach**, **chol**, **cp**"""),
     code_cell("""\
 # === SELECTED 4 FEATURES (Assignment Constraint) ===
@@ -346,7 +346,7 @@ print(f"\\nLabel Encoder classes for cp: {le_cp.classes_}")
 
 # Save encoded dataset
 df_model.to_csv("heart_disease_encoded.csv", index=False)
-print("Encoded dataset saved to heart_disease_encoded.csv OK")
+print("Encoded dataset saved to heart_disease_encoded.csv")
 df_model.head()"""),
 
     md_cell("## Step 4 – Model Training (Support Vector Classifier)"),
@@ -362,7 +362,7 @@ print(f"Testing  samples : {X_test.shape[0]}")
 
 svc_heart = SVC(kernel="rbf", C=1.0, gamma="scale", random_state=42)
 svc_heart.fit(X_train, y_train)
-print("\\nSVC model trained successfully OK")"""),
+print("\\nSVC model trained successfully")"""),
 
     md_cell("## Step 5 – Model Evaluation"),
     code_cell("""\
@@ -398,12 +398,12 @@ sample_encoded = sample_data.copy()
 sample_encoded["cp"] = le_cp.transform(sample_encoded["cp"])
 
 predictions = svc_heart.predict(sample_encoded)
-sample_data["Predicted"] = ["❤️ Heart Disease" if p==1 else "✅ No Heart Disease"
+sample_data["Predicted"] = ["Heart Disease" if p==1 else "No Heart Disease"
                               for p in predictions]
 
 # Save predictions
 sample_data.to_csv("heart_disease_predictions.csv", index=False)
-print("Predictions saved to heart_disease_predictions.csv OK")
+print("Predictions saved to heart_disease_predictions.csv")
 sample_data"""),
 
     md_cell("## Step 7 – Save Trained Model"),
@@ -416,8 +416,8 @@ with open("heart_disease_svc_model.pkl", "wb") as f:
 with open("heart_disease_le_cp.pkl", "wb") as f:
     pickle.dump(le_cp, f)
 
-print("Model saved to heart_disease_svc_model.pkl OK")
-print("Label encoder saved to heart_disease_le_cp.pkl OK")
+print("Model saved to heart_disease_svc_model.pkl")
+print("Label encoder saved to heart_disease_le_cp.pkl")
 print("\\n" + "="*50)
 print("TASK 2 COMPLETE")
 print("="*50)"""),
@@ -426,8 +426,8 @@ print("="*50)"""),
 # ── Write notebooks ──────────────────────────────────────────────
 with open("Task1_Titanic_Survival_Prediction.ipynb", "w", encoding="utf-8") as f:
     json.dump(notebook(titanic_cells), f, indent=1)
-print("Created: Task1_Titanic_Survival_Prediction.ipynb OK")
+print("Created: Task1_Titanic_Survival_Prediction.ipynb")
 
 with open("Task2_Heart_Disease_Prediction.ipynb", "w", encoding="utf-8") as f:
     json.dump(notebook(heart_cells), f, indent=1)
-print("Created: Task2_Heart_Disease_Prediction.ipynb OK")
+print("Created: Task2_Heart_Disease_Prediction.ipynb")

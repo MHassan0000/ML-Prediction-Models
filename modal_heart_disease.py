@@ -32,6 +32,7 @@ image = (
     .add_local_file(str(LOCAL_DIR / "heart_disease_svc_model.pkl"), "/app/heart_disease_svc_model.pkl")
     .add_local_file(str(LOCAL_DIR / "heart_disease_le_cp.pkl"),     "/app/heart_disease_le_cp.pkl")
     .add_local_file(str(LOCAL_DIR / "heart.csv"),                   "/app/heart.csv")
+    .add_local_dir(str(LOCAL_DIR / ".streamlit"),                   "/app/.streamlit")
 )
 
 # ── Web endpoint ──────────────────────────────────────────────────
@@ -51,4 +52,5 @@ def run():
         "--server.headless",           "true",
         "--server.enableCORS",         "false",
         "--server.enableXsrfProtection", "false",
+        "--browser.gatherUsageStats",  "false",
     ])
