@@ -12,5 +12,9 @@ pandas==2.2.3
 seaborn==0.13.2
 matplotlib==3.11.2
 
+# ── Gradient Boosting (Assignment 3) ─────────────────────────────
+xgboost
+tqdm
+
 # ── Web app ──────────────────────────────────────────────────────
 streamlit==1.45.1
