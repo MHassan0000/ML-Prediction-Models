@@ -29,6 +29,23 @@ Predicts California house prices using 5 **different** algorithms with 10-Fold C
 
 Files are in `Assignment3/Task2_House_Price_Prediction/`.
 
+## Assignment 4
+
+### Task 1: Emotion Prediction (Instructor Reference)
+
+Binary and multi-class emotion classification notebooks are in `Assignment4/Task1_Emotion_Prediction/`. Both use TF-IDF and compare 6 algorithms with 10-fold CV.
+
+### Task 2: Amazon Product Review Sentiment Analysis (My Work)
+
+Classifies Amazon product reviews as Positive or Negative using only the review text.
+
+**Dataset:** Amazon Polarity (HuggingFace) — 25,000 reviews, balanced 50/50  
+**Algorithms:** Logistic Regression, Multinomial NB, Random Forest, Linear SVC, KNN, Decision Tree  
+**Best Model:** Linear SVC (~94% CV accuracy)  
+**App:** [Streamlit](https://amazon-sentiment-hassan.streamlit.app)
+
+Files are in `Assignment4/Task2_Amazon_Review_Sentiment/`.
+
 ## How to Run
 
 ```bash

@@ -1,0 +1,101 @@
+Bismillah ir-Rahman ir-Rahim.
+
+Respected instructor and class, Assalam O Alaikom.
+
+My name is Muhammad Hassan Yousaf, roll number FA24-BSE-082. I am grateful for this opportunity to present my semester project for Machine Learning Fundamentals.
+
+------------------------------------------------------------------------
+PART 1: SEMESTER PROJECT
+------------------------------------------------------------------------
+
+For Assignment 4, I built an end-to-end machine learning system that
+analyzes Amazon product reviews and classifies them as either positive
+or negative, using nothing but the text of the review itself. No star
+rating is used as a feature.
+
+The idea is simple but powerful: a customer writes a review, and the
+model reads it and decides whether that person was happy with their
+purchase or not. This kind of system is used in real e-commerce
+platforms to automatically process millions of reviews at scale.
+
+The dataset I used is the Amazon Polarity dataset from HuggingFace,
+which contains over 3.6 million labelled product reviews. I sampled
+25,000 reviews equally, 12,500 positive and 12,500 negative, to create
+a clean balanced dataset.
+
+For feature extraction, I used TF-IDF Vectorization with both
+uni-grams and bi-grams, producing 5,000 features per review. Using
+bi-grams is important here because phrases like "not good" or
+"highly recommend" carry much clearer sentiment than either word alone.
+
+I then compared six machine learning algorithms using 10-fold cross
+validation:
+  1. Logistic Regression
+  2. Multinomial Naive Bayes
+  3. Random Forest
+  4. Linear SVC
+  5. k-Nearest Neighbors
+  6. Decision Tree
+
+The best performing algorithm was Linear SVC with a cross-validation
+accuracy of around 94 percent, which is a strong result for text
+classification on real consumer reviews.
+
+The model is deployed as a live web application built with Streamlit.
+You can paste any Amazon product review into the app and get an instant
+prediction along with a confidence score.
+
+[DEMO: Open the Streamlit app and paste one positive and one negative
+example review to show the audience.]
+
+------------------------------------------------------------------------
+PART 2: COURSE FEEDBACK
+------------------------------------------------------------------------
+
+The three main things I learned from this course are:
+
+  1. How to work with unstructured data like text and extract
+     meaningful numerical features from it using techniques like TF-IDF.
+
+  2. How to properly evaluate machine learning models using cross
+     validation instead of a simple train-test split, which gives a
+     much more reliable estimate of real-world performance.
+
+  3. How to take a trained model and deploy it into a real web
+     application that anyone can use from a browser.
+
+The three strengths of this course are:
+
+  1. The hands-on assignments connect theory directly to practice.
+     Every concept taught in class was reinforced by actually building
+     something that works.
+
+  2. The half-cooked approach is very effective. Having reference code
+     to study and adapt taught me how to structure a proper ML project
+     from start to finish.
+
+  3. The instructor is approachable and explains difficult concepts in
+     a way that is clear and easy to follow.
+
+My three humble suggestions for improvement are:
+
+  1. A session on deep learning or transformer-based models for text
+     would add a lot of value, since that is what industry mostly uses
+     for NLP today.
+
+  2. More time on model deployment and cloud hosting would be useful,
+     as that is often the hardest step for students who are new to it.
+
+  3. A group project or peer review component would help students
+     learn from each other's approaches and get feedback before
+     the final submission.
+
+------------------------------------------------------------------------
+CLOSING
+------------------------------------------------------------------------
+
+To conclude, this course gave me practical skills to build a complete
+machine learning system from raw data all the way to a deployed web
+application. I am very grateful for the experience.
+
+Jazak Allah Khair.
